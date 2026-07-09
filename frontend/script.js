@@ -124,7 +124,7 @@ function loadHotel(id) {
     document.getElementById("email").value = hotel.email;
 
     // Scroll to form
-    document.querySelector("form").scrollIntoView({ behavior: 'smooth' });
+    scrollToForm();
 }
 
 function updateHotel() {
@@ -330,7 +330,7 @@ function loadRoom(id) {
     document.getElementById("capacity").value = room.capacity;
     document.getElementById("status").value = room.status;
 
-    document.querySelector("form").scrollIntoView({ behavior: 'smooth' });
+    scrollToForm();
 }
 
 function updateRoom() {
@@ -487,7 +487,7 @@ function loadCustomer(id) {
     document.getElementById("customer_city").value = customer.city;
     document.getElementById("address").value = customer.address;
 
-    document.querySelector("form").scrollIntoView({ behavior: 'smooth' });
+    scrollToForm();
 }
 
 function updateCustomer() {
@@ -652,7 +652,7 @@ function loadBooking(id) {
     document.getElementById("total_amount").value = booking.total_amount;
     document.getElementById("booking_status").value = booking.booking_status;
 
-    document.querySelector("form").scrollIntoView({ behavior: 'smooth' });
+    scrollToForm();
 }
 
 function updateBooking() {
@@ -808,7 +808,7 @@ function loadPayment(id) {
     document.getElementById("payment_method").value = payment.payment_method;
     document.getElementById("payment_status").value = payment.payment_status;
 
-    document.querySelector("form").scrollIntoView({ behavior: 'smooth' });
+    scrollToForm();
 }
 
 function updatePayment() {
@@ -1062,6 +1062,16 @@ window.onload = function() {
     // 3. Populate dynamic dropdown elements on forms
     populateDropdowns();
 };
+
+// Helper to scroll to form only on mobile/tablet viewports where it is not sticky
+function scrollToForm() {
+    if (window.innerWidth <= 1024) {
+        const form = document.querySelector("form");
+        if (form) {
+            form.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
 
 // Navigation Hamburger Menu Toggler
 function toggleMobileMenu() {
