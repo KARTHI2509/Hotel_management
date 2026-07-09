@@ -25,6 +25,7 @@
     --warning-gradient: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
     --gray-gradient: linear-gradient(135deg, #94A3B8 0%, #64748B 100%);
     --accent-gradient: linear-gradient(135deg, #FBBF24 0%, #D97706 100%);
+    --info-gradient: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
     --hero-overlay: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.9));
     --glass-card: rgba(255, 255, 255, 0.75);
     
@@ -178,6 +179,22 @@ main, .dashboard-layout, .featured, form, .hero, .why-choose-us, .testimonials-s
     70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
     100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
 }
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@keyframes inputGlowPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.2); }
+    50% { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.2); }
+}
+
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
     40% { transform: translateY(-15px); }
@@ -421,6 +438,20 @@ header.scrolled {
     position: sticky;
     top: 110px;
     z-index: 10;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.form-container::-webkit-scrollbar {
+    width: 6px;
+}
+.form-container::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: var(--radius-full);
+}
+.form-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
 }
 
 .content-container {
@@ -648,6 +679,7 @@ form textarea:focus {
     border-color: var(--primary);
     background-color: white;
     box-shadow: var(--primary-glow);
+    animation: inputGlowPulse 2s infinite;
 }
 
 /* Floating Glow borders using CSS Focus events */
@@ -692,6 +724,32 @@ form button,
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
+}
+
+form button::after,
+.btn-group button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    opacity: 0;
+}
+
+form button:hover::after,
+.btn-group button:hover::after {
+    left: 125%;
+    opacity: 1;
+    transition: all 0.75s ease-in-out;
 }
 
 form button:hover,
@@ -835,6 +893,7 @@ form button[type="reset"]:hover,
     position: relative;
     overflow: hidden;
     padding: 0;
+    animation: cardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hotel-card:hover {
