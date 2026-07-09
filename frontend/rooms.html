@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <h2><i class="fa-solid fa-hotel"></i> Hotel Booking</h2>
+
+            <button class="hamburger-menu" aria-label="Toggle Menu" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="hotels.html">Hotels</a></li>
+                <li><a href="rooms.html" class="active">Rooms</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Two-Column Layout -->
+    <div class="dashboard-layout">
+        
+        <!-- Left: Form Setup -->
+        <aside class="form-container">
+            <form>
+                <h2><i class="fa-solid fa-door-open"></i> Room Setup</h2>
+
+                <div class="form-group">
+                    <label for="room_id">Room ID (Required)</label>
+                    <i class="fa-solid fa-hashtag input-icon"></i>
+                    <input type="number" id="room_id" placeholder="Enter Unique Room ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="room_hotel_name">Hotel Name</label>
+                    <i class="fa-solid fa-hotel input-icon"></i>
+                    <select id="room_hotel_name" required>
+                        <option value="">Select Hotel</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="room_number">Room Number</label>
+                    <i class="fa-solid fa-door-closed input-icon"></i>
+                    <input type="number" id="room_number" placeholder="Enter Room Number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="room_type">Room Type</label>
+                    <i class="fa-solid fa-bed input-icon"></i>
+                    <select id="room_type" required>
+                        <option value="">Select Room Type</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Deluxe">Deluxe</option>
+                        <option value="Suite">Suite</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price Per Night (₹)</label>
+                    <i class="fa-solid fa-indian-rupee-sign input-icon"></i>
+                    <input type="number" id="price" placeholder="Price in ₹" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="capacity">Capacity (Guests)</label>
+                    <i class="fa-solid fa-users input-icon"></i>
+                    <input type="number" id="capacity" placeholder="Capacity (e.g. 2)" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Room Status</label>
+                    <i class="fa-solid fa-circle-dot input-icon"></i>
+                    <select id="status" required>
+                        <option value="">Select Room Status</option>
+                        <option value="Available">Available</option>
+                        <option value="Booked">Booked</option>
+                    </select>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" onclick="addRoom()">
+                        <i class="fa-solid fa-plus"></i> Add Room
+                    </button>
+                    <button type="button" onclick="updateRoom()">
+                        <i class="fa-solid fa-save"></i> Update Room
+                    </button>
+                    <button type="reset" onclick="clearRoomForm()">
+                        <i class="fa-solid fa-rotate-left"></i> Clear
+                    </button>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Right: Listings -->
+        <main class="content-container">
+            <section class="featured">
+                <h2>Available Rooms</h2>
+                <div class="hotel-container" id="roomList">
+                    <!-- Rooms will be loaded here -->
+                </div>
+            </section>
+        </main>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hotel Booking</h3>
+                <p>Providing premium accommodation services and easy booking operations globally since 2026.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Luxury Road, Goa, India</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@hotelbooking.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive news, premium deals, and special discounts.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hotel Booking Management System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

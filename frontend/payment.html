@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <h2><i class="fa-solid fa-hotel"></i> Hotel Booking</h2>
+
+            <button class="hamburger-menu" aria-label="Toggle Menu" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="hotels.html">Hotels</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="payment.html" class="active">Payment</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Two-Column Layout -->
+    <div class="dashboard-layout">
+        
+        <!-- Left: Setup Form -->
+        <aside class="form-container">
+            <form>
+                <h2><i class="fa-solid fa-credit-card"></i> Payment Processing</h2>
+
+                <div class="form-group">
+                    <label for="payment_id">Payment ID (Required)</label>
+                    <i class="fa-solid fa-hashtag input-icon"></i>
+                    <input type="number" id="payment_id" placeholder="Enter Unique Payment ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="payment_booking_id">Booking ID Selection</label>
+                    <i class="fa-solid fa-ticket input-icon"></i>
+                    <select id="payment_booking_id" required>
+                        <option value="">Select Booking ID</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="payment_customer_name">Customer Name</label>
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" id="payment_customer_name" readonly placeholder="Customer Name (Auto-filled)">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Payment Amount (₹)</label>
+                    <i class="fa-solid fa-indian-rupee-sign input-icon"></i>
+                    <input type="number" id="amount" readonly placeholder="Amount in ₹ (Auto-filled)">
+                </div>
+
+                <div class="form-group">
+                    <label for="payment_method">Payment Method</label>
+                    <i class="fa-solid fa-credit-card input-icon"></i>
+                    <select id="payment_method" required>
+                        <option value="">Select Method</option>
+                        <option value="UPI">UPI / GPay</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Debit Card">Debit Card</option>
+                        <option value="Net Banking">Net Banking</option>
+                        <option value="Cash">Cash</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="payment_status">Payment Status</label>
+                    <i class="fa-solid fa-circle-dot input-icon"></i>
+                    <select id="payment_status" required>
+                        <option value="">Select Status</option>
+                        <option value="Success">Success</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Failed">Failed</option>
+                    </select>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" onclick="addPayment()">
+                        <i class="fa-solid fa-receipt"></i> Process
+                    </button>
+                    <button type="button" onclick="updatePayment()">
+                        <i class="fa-solid fa-save"></i> Update
+                    </button>
+                    <button type="reset" onclick="clearPaymentForm()">
+                        <i class="fa-solid fa-rotate-left"></i> Clear
+                    </button>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Right: Listings -->
+        <main class="content-container">
+            <section class="featured">
+                <h2>Payment Records</h2>
+                <div class="hotel-container" id="paymentList">
+                    <!-- Payment cards will appear here -->
+                </div>
+            </section>
+        </main>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hotel Booking</h3>
+                <p>Providing premium accommodation services and easy booking operations globally since 2026.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Luxury Road, Goa, India</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@hotelbooking.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive news, premium deals, and special discounts.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hotel Booking Management System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

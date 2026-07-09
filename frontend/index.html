@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Management System</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <h2><i class="fa-solid fa-hotel"></i> Hotel Booking</h2>
+
+            <button class="hamburger-menu" aria-label="Toggle Menu" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="hotels.html">Hotels</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="anim-fade-up">Welcome to Hotel Booking Management System</h1>
+        <p class="anim-fade-up">Book your favorite hotel rooms quickly, securely, and easily with our modern booking engine.</p>
+
+        <a href="hotels.html" class="btn anim-fade-up">
+            <i class="fa-solid fa-magnifying-glass"></i> Explore Hotels
+        </a>
+
+        <div class="scroll-indicator" onclick="document.getElementById('searchSection').scrollIntoView({behavior: 'smooth'})">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Search Hotel -->
+    <section class="search" id="searchSection">
+        <h2><i class="fa-solid fa-location-dot"></i> Search Hotels By City</h2>
+        <div class="search-group">
+            <div class="input-wrapper">
+                <i class="fa-solid fa-city input-icon"></i>
+                <input
+                    type="text"
+                    id="searchCity"
+                    placeholder="Enter City Name (e.g. Bangalore, Goa)"
+                >
+            </div>
+            <button onclick="searchHotel()">
+                <i class="fa-solid fa-search"></i> Search
+            </button>
+        </div>
+    </section>
+
+    <!-- Featured Hotels -->
+    <section class="featured">
+        <h2>Featured Destinations</h2>
+        <div class="hotel-container">
+
+            <div class="hotel-card">
+                <span class="badge success"><i class="fa-solid fa-star" style="color: #FBBF24;"></i> 4.5</span>
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-body">
+                    <h3>Grand Palace</h3>
+                    <p><i class="fa-solid fa-map-marker-alt"></i> <b>Location:</b> Bangalore, Karnataka</p>
+                    <p><i class="fa-solid fa-circle-info"></i> Luxurious suites with high-class amenities, pool view, and fine dining.</p>
+                </div>
+            </div>
+
+            <div class="hotel-card">
+                <span class="badge success"><i class="fa-solid fa-star" style="color: #FBBF24;"></i> 4.2</span>
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-body">
+                    <h3>Royal Inn</h3>
+                    <p><i class="fa-solid fa-map-marker-alt"></i> <b>Location:</b> Hyderabad, Telangana</p>
+                    <p><i class="fa-solid fa-circle-info"></i> Premium rooms close to historical landmarks and tech parks.</p>
+                </div>
+            </div>
+
+            <div class="hotel-card">
+                <span class="badge success"><i class="fa-solid fa-star" style="color: #FBBF24;"></i> 4.8</span>
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-body">
+                    <h3>Sea View Resort</h3>
+                    <p><i class="fa-solid fa-map-marker-alt"></i> <b>Location:</b> Goa, India</p>
+                    <p><i class="fa-solid fa-circle-info"></i> Beautiful beachfront cottages with direct sea view access and water sports.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <h2>Why Choose Us</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Secure Booking</h3>
+                <p>Enjoy a secure and reliable reservation flow with instant confirmation and premium support.</p>
+            </div>
+            <div class="why-item">
+                <i class="fa-solid fa-tag"></i>
+                <h3>Best Price Guarantee</h3>
+                <p>We match rates to ensure you get the absolute best price for any deluxe rooms or premium suites.</p>
+            </div>
+            <div class="why-item">
+                <i class="fa-solid fa-headset"></i>
+                <h3>24/7 Premium Concierge</h3>
+                <p>Our professional hotel managers are ready to assist you any time of the day or night.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2>What Our Guests Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p>"The check-in experience was seamless, and the deluxe room was absolutely breathtaking. Will book again!"</p>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">JD</div>
+                    <div class="testimonial-info">
+                        <h4>John Doe</h4>
+                        <span>Verified Traveler</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p>"Fantastic beachfront cottage recommendations! Safe payments and instant invoices directly online."</p>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">SM</div>
+                    <div class="testimonial-info">
+                        <h4>Sarah Miller</h4>
+                        <span>Leisure Vacationer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hotel Booking</h3>
+                <p>Providing premium accommodation services and easy booking operations globally since 2026.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Luxury Road, Goa, India</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@hotelbooking.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive news, premium deals, and special discounts.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hotel Booking Management System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
