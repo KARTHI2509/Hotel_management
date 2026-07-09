@@ -2,7 +2,7 @@
 // HOTEL BOOKING SYSTEM CORE JAVASCRIPT
 // ==========================================================================
 
-const BASE_URL = "http://127.0.0.1:2500";
+const BASE_URL = "https://hotel-management-j3v2.onrender.com";
 
 // Global cache variables to prevent string-interpolation single-quote bugs
 let hotelsCached = [];
